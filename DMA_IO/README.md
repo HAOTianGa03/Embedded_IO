@@ -114,10 +114,11 @@ int main(void)
     MX_DMA_Init();
     MX_USART1_UART_Init();
 
-    // 初始化双缓冲区管理器
-    vofaHandler.begin(2, 50, &huart1);
     // 注册处理 "乒乓缓冲区" 事件的回调函数
     vofaHandler.attachEvent(vofaMessageProcess, PINGPONG_BUFFER);
+    // 初始化双缓冲区管理器
+    vofaHandler.begin(2, 50, &huart1);
+
 
     while (1)
     {
